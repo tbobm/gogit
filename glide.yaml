@@ -1,2 +1,4 @@
 package: github.com/tbobm/gitcli
-import: []
+import:
+- package: github.com/urfave/cli
+  version: ^1.20.0
