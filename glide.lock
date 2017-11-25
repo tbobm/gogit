@@ -1,0 +1,8 @@
+hash: 3e051d1743a37e5d00e51b57bc4445181abc490e59e2451de87bc74a6e3a4d70
+updated: 2017-11-25T16:58:27.008518937+01:00
+imports:
+- name: github.com/google/go-github
+  version: 872b3704ba8e8c5709aa4c9f66f204bb1cf2b135
+- name: github.com/urfave/cli
+  version: cfb38830724cc34fedffe9a2a29fb54fa9169cd1
+testImports: []
