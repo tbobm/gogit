@@ -13,9 +13,10 @@ import (
 
 const maxDisplay int = 10
 
-func createRepo(name string, private bool) error {
-    //client := github.NewClient(nil)
+func createRepo(c *cli.Context) error {
+    //client := getClient()
 
+    //opt := &github.Repo
     return nil
 }
 
@@ -64,18 +65,7 @@ func main() {
 			Aliases: []string{"r"},
 			Usage:   "Repository management",
 			Subcommands: []cli.Command{
-				{
-					Name:  "Create",
-					Usage: "create a new repository",
-					Action: func(c *cli.Context) error {
-						fmt.Println("New repository created", c.Args().First())
-						return nil
-					},
-                }, {
-                    Name: "List",
-                    Usage: "list top ten last updated repositories",
-                    Action: listRepos,
-                },
+				commandsCreateRepo(), commandsListRepo(),
 			},
 		},
 	}
