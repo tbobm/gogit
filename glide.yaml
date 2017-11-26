@@ -1,4 +1,4 @@
-package: github.com/tbobm/gitcli
+package: github.com/tbobm/gogit
 import:
 - package: github.com/urfave/cli
   version: ^1.20.0
