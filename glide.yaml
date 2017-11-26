@@ -3,3 +3,4 @@ import:
 - package: github.com/urfave/cli
   version: ^1.20.0
 - package: github.com/google/go-github
+- package: github.com/google/go-github/github
