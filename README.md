@@ -1,4 +1,4 @@
-# Github GO!
+# Gogit
 Golang-based CLI wrapper for github.com
 
 ## Why ?
