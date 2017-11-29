@@ -15,4 +15,6 @@
 
 vendor/
 *.swp
+*.vim
 gogit
+
