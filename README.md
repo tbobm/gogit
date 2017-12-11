@@ -15,5 +15,4 @@ Plus I like my terminal font more than my browser's, in addition to that.
 ## Usage
 
 Export your freshly created 
-[personnal access token](https://github.com/settings/token), as `GIT_TOKEN`
-
+[personnal access token](https://github.com/settings/token), as `GITHUB_TOKEN` 
