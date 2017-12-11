@@ -8,9 +8,11 @@ import (
 )
 
 func createRepo(c *cli.Context) error {
+    verbose := true
     client := getClient()
     fmt.Println(c.Bool("private"))
 
+    fmt.Println("Verbose: ", c.Bool("verbose"))
     name := c.String("name")
     private := c.Bool("private")
     if name == "" {
@@ -23,7 +25,17 @@ func createRepo(c *cli.Context) error {
     }
 
     repository, response, err := client.Repositories.Create(context.Background(), "", repo)
-    fmt.Println(repository, response, err)
+    fmt.Println("Created repository: ", repository.GetName())
+    fmt.Println("URL: ", repository.GetURL())
+
+    if verbose {
+        fmt.Println("Remaining calls: ", response.Remaining)
+        fmt.Println("Reset timestamp: ", response.Rate.Reset)
+    }
+
+    if err != nil {
+        return err
+    }
     return nil
 }
 

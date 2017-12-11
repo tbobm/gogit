@@ -15,7 +15,7 @@ const maxDisplay int = 10
 const (
     author string = "Theo Massard"
     email string = "<massar_t@etna-alternance.net>"
-    version string = "1.0.0"
+    version string = "1.1.0"
 )
 
 func getClient() *github.Client {
@@ -53,5 +53,4 @@ func main() {
 		},
 	}
 	app.Run(os.Args)
-    //listRepos(client)
 }
