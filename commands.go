@@ -1,7 +1,7 @@
 package main
 
 import (
-    "fmt"
+    //"fmt"
     "github.com/urfave/cli"
     //"context"
 )
@@ -11,9 +11,16 @@ func commandsCreateRepo() cli.Command {
         Name:  "create",
         Aliases: []string{"c"},
         Usage: "create a new repository",
-        Action: func(c *cli.Context) error {
-            fmt.Println("New repository created", c.Args().First())
-            return nil
+        Action: createRepo,
+        Flags: []cli.Flag {
+            cli.StringFlag{
+                Name: "name,n",
+                Usage: "repository name",
+            },
+            cli.BoolFlag{
+                Name: "private,p",
+                Usage: "repository's visibility",
+            },
         },
     }
     return *command

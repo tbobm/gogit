@@ -8,9 +8,22 @@ import (
 )
 
 func createRepo(c *cli.Context) error {
-    //client := getClient()
+    client := getClient()
+    fmt.Println(c.Bool("private"))
 
-    //opt := &github.Repo
+    name := c.String("name")
+    private := c.Bool("private")
+    if name == "" {
+        return fmt.Errorf("Missing repository name")
+    }
+
+    repo := &github.Repository{
+        Name: github.String(name),
+        Private: github.Bool(private),
+    }
+
+    repository, response, err := client.Repositories.Create(context.Background(), "", repo)
+    fmt.Println(repository, response, err)
     return nil
 }
 

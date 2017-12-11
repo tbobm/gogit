@@ -12,13 +12,11 @@ import (
 
 const maxDisplay int = 10
 
-
-
 func getClient() *github.Client {
     var token string
     var tc *http.Client
 
-    token = os.Getenv("GIT_TOKEN")
+    token = os.Getenv("GITHUB_TOKEN")
     if token != "" {
         ts := oauth2.StaticTokenSource(
             &oauth2.Token{AccessToken: token},
