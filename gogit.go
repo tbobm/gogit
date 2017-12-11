@@ -12,6 +12,12 @@ import (
 
 const maxDisplay int = 10
 
+const (
+    author string = "Theo Massard"
+    email string = "<massar_t@etna-alternance.net>"
+    version string = "1.0.0"
+)
+
 func getClient() *github.Client {
     var token string
     var tc *http.Client
@@ -29,6 +35,12 @@ func getClient() *github.Client {
 
 func main() {
 	app := cli.NewApp()
+
+    app.Name = "Gogit"
+    app.Author = author
+    app.Version = version
+    app.Usage = "CLI client for github.com"
+    app.Email = email
 
 	app.Commands = []cli.Command{
 		{
