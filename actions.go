@@ -39,21 +39,23 @@ func createRepo(c *cli.Context) error {
 	return nil
 }
 
-func listRepos(c *cli.Context) {
+func listRepos(c *cli.Context) error {
 	var toDisplay int64
 	client := getClient()
 	opt := &github.RepositoryListOptions{
 		Sort: "updated",
 	}
-	repos, resp, err := client.Repositories.List(context.Background(), "tbobm", opt)
-	if err != nil {
-		fmt.Println(err)
+	uname := c.String("user")
+	if uname != "" {
+		fmt.Println("Listing repositories for user: ", uname)
 	}
-	fmt.Println(resp.Rate.Remaining)
-	fmt.Println("10 last updated repositories: ")
+
+	repos, resp, err := client.Repositories.List(context.Background(), uname, opt)
+	if err != nil {
+		return err
+	}
 	argDisplay := c.Int64("count")
 
-	fmt.Println("Count:", argDisplay)
 	if argDisplay == 0 {
 		toDisplay = maxDisplay
 	} else {
@@ -62,10 +64,12 @@ func listRepos(c *cli.Context) {
 
 	var idxAs64 int64
 	for idx, repo := range repos {
-		idxAs64 = int64(idx)
-		fmt.Println(repo.GetName(), ": ", repo.GetURL())
+		idxAs64 = int64(idx + 1)
+		fmt.Println(idx+1, ":", repo.GetName(), "-", repo.GetHTMLURL())
 		if idxAs64 == toDisplay {
 			break
 		}
 	}
+	fmt.Println(resp.Rate.Remaining)
+	return nil
 }

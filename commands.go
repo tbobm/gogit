@@ -34,8 +34,8 @@ func commandsListRepo() cli.Command {
 		Action:  listRepos,
 	}
 	command.Flags = []cli.Flag{
-		cli.BoolFlag{
-			Name:  "user,u",
+		cli.StringFlag{
+			Name:  "username,user,u",
 			Usage: "the author of the repositories",
 		},
 		cli.Int64Flag{
