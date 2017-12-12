@@ -33,5 +33,15 @@ func commandsListRepo() cli.Command {
         Usage: "list top ten last updated repositories",
         Action: listRepos,
     }
+    command.Flags = []cli.Flag{
+        cli.BoolFlag{
+            Name: "user,u",
+            Usage: "the author of the repositories",
+        },
+        cli.Int64Flag{
+            Name: "count,c",
+            Usage: "number of repositories to display",
+        },
+    }
     return *command
 }

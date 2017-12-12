@@ -6,11 +6,10 @@ import (
     "golang.org/x/oauth2"
     "context"
     "net/http"
-	//"log"
 	"os"
 )
 
-const maxDisplay int = 10
+const maxDisplay int64 = 10
 
 const (
     author string = "Theo Massard"

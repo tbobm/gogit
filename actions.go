@@ -41,6 +41,7 @@ func createRepo(c *cli.Context) error {
 
 
 func listRepos(c *cli.Context) {
+    var toDisplay int64
     client := getClient()
     opt := &github.RepositoryListOptions{
         Sort: "updated",
@@ -51,9 +52,20 @@ func listRepos(c *cli.Context) {
     }
     fmt.Println(resp.Rate.Remaining)
     fmt.Println("10 last updated repositories: ")
+    argDisplay := c.Int64("count")
+
+    fmt.Println("Count:", argDisplay)
+    if argDisplay == 0 {
+        toDisplay = maxDisplay
+    } else {
+        toDisplay = argDisplay
+    }
+
+    var idxAs64 int64
     for idx, repo := range repos {
+        idxAs64 = int64(idx)
         fmt.Println(repo.GetName(), ": ", repo.GetURL())
-        if idx == maxDisplay {
+        if idxAs64 == toDisplay {
             break
         }
     }
