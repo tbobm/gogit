@@ -19,7 +19,6 @@ test:
 	go test
 
 release:
-	git tag -a $(TAG)
 	goreleaser
 
 .PHONY: all build check clean install test
