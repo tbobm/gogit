@@ -1,4 +1,5 @@
-NAME = gogit
+NAME	= gogit
+TAG	=
 
 all: install
 
@@ -16,5 +17,9 @@ clean:
 
 test:
 	go test
+
+release:
+	git tag -a $(TAG)
+	goreleaser
 
 .PHONY: all build check clean install test
