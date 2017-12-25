@@ -1,5 +1,5 @@
 SRC		=	gogit.go \
-			action.go \
+			actions.go \
 			commands.go
 
 all:
