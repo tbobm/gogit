@@ -38,8 +38,8 @@ $ gogit --help # Or simply 'gogit', which defaults to displaying the help
 
 ### From a release
 
-Download the corresponding archive from [the release page](https://github.com/tbobm/gogit/releases)
-And place it in your `$PATH` variable.
+Download the corresponding archive from [the release page](https://github.com/tbobm/gogit/releases),
+extract its content, and place the `gogit` executable in your `$PATH` variable.
 
 ### From source
 
