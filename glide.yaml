@@ -3,4 +3,7 @@ import:
 - package: github.com/urfave/cli
   version: ^1.20.0
 - package: github.com/google/go-github
-- package: github.com/google/go-github/github
+  subpackages:
+  - github
+- package: github.com/fatih/color
+  version: ^1.5.0

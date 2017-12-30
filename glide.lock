@@ -1,6 +1,8 @@
-hash: 7ea145c0913135daf0ebbb97590df002c93e9d9aa595c6cb706a368b922e8977
-updated: 2017-11-26T13:06:13.930920416+01:00
+hash: e40acba00767a43ae1349a4afd7ec0f089623491c7ac1a6d8593157aef779a93
+updated: 2017-12-30T13:22:52.751687215+01:00
 imports:
+- name: github.com/fatih/color
+  version: 570b54cabe6b8eb0bc2dfce68d964677d63b5260
 - name: github.com/golang/protobuf
   version: 1e59b77b52bf8e4b449a57e6f79f21226d571845
   subpackages:
@@ -21,11 +23,11 @@ imports:
   - context
   - context/ctxhttp
 - name: golang.org/x/oauth2
-  version: f95fa95eaa936d9d87489b15d1d18b97c1ba9c28
+  version: 197281d4e0ecd78c33865daf9c6e51626feefcb2
   subpackages:
   - internal
 - name: google.golang.org/appengine
-  version: 9d8544a6b2c7df9cff240fcf92d7b2f59bc13416
+  version: 5bee14b453b4c71be47ec1781b0fa61c2ea182db
   subpackages:
   - internal
   - internal/base
