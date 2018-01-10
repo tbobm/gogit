@@ -26,7 +26,8 @@ func createRepo(c *cli.Context) error {
 
 	repository, response, err := client.Repositories.Create(context.Background(), "", repo)
 	fmt.Println("Created repository: ", repository.GetName())
-	fmt.Println("URL: ", repository.GetURL())
+	fmt.Println("URL: ", repository.GetHTMLURL())
+
 
 	if verbose {
 		fmt.Println("Remaining calls: ", response.Remaining)
