@@ -3,7 +3,7 @@ SRC		=	gogit.go \
 			commands.go
 NAME	= gogit
 
-all: install
+all: build
 
 build:
 	go build -o $(NAME)
