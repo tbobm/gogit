@@ -10,12 +10,11 @@ import (
 func createRepo(c *cli.Context) error {
 	verbose := true
 	client := getClient()
-	fmt.Println(c.Bool("private"))
 
-	fmt.Println("Verbose: ", c.Bool("verbose"))
 	name := c.String("name")
 	private := c.Bool("private")
 	if name == "" {
+		fmt.Println("Error: Missing repository name.")
 		return fmt.Errorf("Missing repository name")
 	}
 
@@ -25,6 +24,10 @@ func createRepo(c *cli.Context) error {
 	}
 
 	repository, response, err := client.Repositories.Create(context.Background(), "", repo)
+	if err != nil {
+		fmt.Println(err)
+		return err
+	}
 	fmt.Println("Created repository: ", repository.GetName())
 	fmt.Println("URL: ", repository.GetHTMLURL())
 
@@ -34,14 +37,13 @@ func createRepo(c *cli.Context) error {
 		fmt.Println("Reset timestamp: ", response.Rate.Reset)
 	}
 
-	if err != nil {
-		return err
-	}
 	return nil
 }
 
 func listRepos(c *cli.Context) error {
 	var toDisplay int64
+	var idxAs64 int64
+
 	client := getClient()
 	opt := &github.RepositoryListOptions{
 		Sort: "updated",
@@ -53,6 +55,7 @@ func listRepos(c *cli.Context) error {
 
 	repos, resp, err := client.Repositories.List(context.Background(), uname, opt)
 	if err != nil {
+		fmt.Println(err)
 		return err
 	}
 	argDisplay := c.Int64("count")
@@ -63,7 +66,6 @@ func listRepos(c *cli.Context) error {
 		toDisplay = argDisplay
 	}
 
-	var idxAs64 int64
 	for idx, repo := range repos {
 		idxAs64 = int64(idx + 1)
 		fmt.Println(idx+1, ":", repo.GetName(), "-", repo.GetHTMLURL())
@@ -71,6 +73,6 @@ func listRepos(c *cli.Context) error {
 			break
 		}
 	}
-	fmt.Println(resp.Rate.Remaining)
+	fmt.Println("Remaining requests available: ", resp.Rate.Remaining)
 	return nil
 }
