@@ -47,7 +47,7 @@ func main() {
 			Aliases: []string{"r"},
 			Usage:   "Repository management",
 			Subcommands: []cli.Command{
-				commandsCreateRepo(), commandsListRepo(),
+				commandsCreateRepo(), commandsListRepo(), commandsAddCollab(),
 			},
 		},
 	}

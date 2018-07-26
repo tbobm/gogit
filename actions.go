@@ -31,6 +31,51 @@ func createRepo(c *cli.Context) error {
 	fmt.Println("Created repository: ", repository.GetName())
 	fmt.Println("URL: ", repository.GetHTMLURL())
 
+	if verbose {
+		fmt.Println("Remaining calls: ", response.Remaining)
+		fmt.Println("Reset timestamp: ", response.Rate.Reset)
+	}
+
+	return nil
+}
+
+func addCollab(c *cli.Context) error {
+	verbose := true
+	client := getClient()
+
+	name := c.String("name")
+	collaborator := c.String("collaborator")
+	owner := c.String("owner")
+
+	if name == "" {
+		fmt.Println("Error: Missing repository name.")
+		return fmt.Errorf("Missing repository name")
+	}
+
+	if collaborator == "" {
+		fmt.Println("Error: Missing collaborator name.")
+		return fmt.Errorf("Missing collaborator name")
+	}
+
+	if owner == "" {
+		fmt.Println("Error: Missing owner name.")
+		return fmt.Errorf("Missing owner name")
+	}
+
+	client.GetUsers()
+	fmt.Println("adding", collaborator, "to", name)
+	response, err := client.Repositories.AddCollaborator(
+		context.Background(),
+		owner,
+		name,
+		collaborator,
+		&github.RepositoryAddCollaboratorOptions{},
+	)
+	if err != nil {
+		fmt.Println(err)
+		return err
+	}
+	fmt.Println("Send invitation to collaborator: ", collaborator)
 
 	if verbose {
 		fmt.Println("Remaining calls: ", response.Remaining)

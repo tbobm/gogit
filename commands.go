@@ -26,6 +26,30 @@ func commandsCreateRepo() cli.Command {
 	return *command
 }
 
+func commandsAddCollab() cli.Command {
+	command := &cli.Command{
+		Name:    "add",
+		Aliases: []string{"a"},
+		Usage:   "add a collaborator",
+		Action:  addCollab,
+		Flags: []cli.Flag{
+			cli.StringFlag{
+				Name:  "name,n",
+				Usage: "repository name",
+			},
+			cli.StringFlag{
+				Name:  "owner,o",
+				Usage: "repository owner name",
+			},
+			cli.StringFlag{
+				Name:  "collaborator,c",
+				Usage: "collaborator's username",
+			},
+		},
+	}
+	return *command
+}
+
 func commandsListRepo() cli.Command {
 	command := &cli.Command{
 		Name:    "list",
