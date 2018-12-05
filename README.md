@@ -46,6 +46,9 @@ extract its content, and place the `gogit` executable in your `$PATH` variable.
 Clone the master branch, and run `make install`.
 This will run the `go install` command, placing the `gogit` executable in your `$GOPATH`
 
+[dep](https://github.com/golang/dep) is used to manage packages.
+
+
 ```bash
 $ git clone https://github.com/tbobm/gogit
 $ cd gogit
